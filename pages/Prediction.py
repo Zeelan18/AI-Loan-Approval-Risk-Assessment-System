@@ -339,15 +339,10 @@ if st.button(
             risk
         )
     )
-
-conn.commit()
-
-st.success(
+    conn.commit()
+    st.success(
     "Assessment saved successfully"
 )
-# -----------------------
-# PDF REPORT
-# -----------------------
 
 generate_report(
     "loan_report.pdf",
@@ -369,3 +364,4 @@ with open(
         file_name="Loan_Assessment_Report.pdf",
         mime="application/pdf"
     )
+
