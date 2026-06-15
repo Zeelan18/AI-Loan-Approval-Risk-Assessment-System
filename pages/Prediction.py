@@ -346,26 +346,26 @@ if st.button(
         "Assessment saved successfully"
     )
     # -----------------------
-    # PDF REPORT
-    # -----------------------
+# PDF REPORT
+# -----------------------
 
-    generate_report(
-        "reports/loan_report.pdf",
-         decision,
-        probability,
-        risk,
-        applicant_income,
-        loan_amount
-    )
+generate_report(
+    "loan_report.pdf",
+    decision,
+    probability,
+    risk,
+    applicant_income,
+    loan_amount
+)
 
-    with open(
-     "reports/loan_report.pdf",
-     "rb"
-    ) as pdf:
+with open(
+    "loan_report.pdf",
+    "rb"
+) as pdf:
 
-        st.download_button(
-         "📄 Download PDF Report",
-         pdf,
-             file_name="Loan_Assessment_Report.pdf",
+    st.download_button(
+        "📄 Download PDF Report",
+        pdf,
+        file_name="Loan_Assessment_Report.pdf",
         mime="application/pdf"
-        )
+    )
