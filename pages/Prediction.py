@@ -340,12 +340,12 @@ if st.button(
         )
     )
 
-    conn.commit()
+conn.commit()
 
-    st.success(
-        "Assessment saved successfully"
-    )
-    # -----------------------
+st.success(
+    "Assessment saved successfully"
+)
+# -----------------------
 # PDF REPORT
 # -----------------------
 
