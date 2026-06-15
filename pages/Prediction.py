@@ -5,7 +5,6 @@ import sqlite3
 import plotly.graph_objects as go
 from datetime import datetime
 
-from utils import generate_report
 
 st.set_page_config(layout="wide")
 
