@@ -4,6 +4,7 @@ import joblib
 import sqlite3
 import plotly.graph_objects as go
 from datetime import datetime
+from utils import generate_report
 
 
 st.set_page_config(layout="wide")
@@ -338,29 +339,43 @@ if st.button(
             risk
         )
     )
+
     conn.commit()
+
     st.success(
-    "Assessment saved successfully"
-)
-
-generate_report(
-    "loan_report.pdf",
-    decision,
-    probability,
-    risk,
-    applicant_income,
-    loan_amount
-)
-
-with open(
-    "loan_report.pdf",
-    "rb"
-) as pdf:
-
-    st.download_button(
-        "📄 Download PDF Report",
-        pdf,
-        file_name="Loan_Assessment_Report.pdf",
-        mime="application/pdf"
+        "✅ Assessment saved successfully"
     )
+        # -----------------------
+    # PDF REPORT
+    # -----------------------
 
+    try:
+
+        generate_report(
+            "loan_report.pdf",
+            decision,
+            probability,
+            risk,
+            applicant_income,
+            loan_amount
+        )
+
+        with open(
+            "loan_report.pdf",
+            "rb"
+        ) as pdf:
+
+            st.download_button(
+                label="📄 Download PDF Report",
+                data=pdf,
+                file_name="Loan_Assessment_Report.pdf",
+                mime="application/pdf"
+            )
+
+    except Exception as e:
+
+        st.error(
+            f"PDF Generation Error: {e}"
+        )
+
+    
